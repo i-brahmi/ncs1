@@ -111,6 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                   BlocProvider.of<UserCubit>(
                     context,
                     listen: false,
+                    //those just for testing the backend works perfectly and so the authentication
                   ).login("swoudgkwv@gmail.com", "As1#234567!");
                 },
                 child: Container(
