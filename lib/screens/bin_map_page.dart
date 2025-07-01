@@ -27,14 +27,12 @@ class TrashBin {
   final String name;
   final double latitude;
   final double longitude;
-  final String address;
 
   TrashBin({
     required this.id,
     required this.name,
     required this.latitude,
     required this.longitude,
-    required this.address,
   });
 
   factory TrashBin.fromJson(Map<String, dynamic> json) {
@@ -43,7 +41,6 @@ class TrashBin {
       name: json['name'],
       latitude: json['latitude'].toDouble(),
       longitude: json['longitude'].toDouble(),
-      address: json['address'],
     );
   }
 }
@@ -209,10 +206,9 @@ class _MapsScreenState extends State<MapsScreen> {
           ),
           infoWindow: InfoWindow(
             title: bin.name,
-            snippet:
-                '${bin.address}\nDistance: ${(distance / 1000).toStringAsFixed(2)} km',
+
+            onTap: () => _showBinDetails(bin, distance),
           ),
-          onTap: () => _showBinDetails(bin, distance),
         ),
       );
     }
@@ -236,10 +232,6 @@ class _MapsScreenState extends State<MapsScreen> {
                 ),
               ),
               const SizedBox(height: 8),
-              Text(
-                'Address: ${bin.address}',
-                style: const TextStyle(fontSize: 16),
-              ),
               const SizedBox(height: 8),
               Text(
                 'Distance: ${(distance / 1000).toStringAsFixed(2)} km',
@@ -415,9 +407,7 @@ class _MapsScreenState extends State<MapsScreen> {
                             color: Colors.green,
                           ),
                           title: Text(bin.name),
-                          subtitle: Text(
-                            '${bin.address}\n${(distance / 1000).toStringAsFixed(2)} km away',
-                          ),
+                          subtitle: Text(''),
                           isThreeLine: true,
                           onTap: () => _navigateToBin(bin),
                         );

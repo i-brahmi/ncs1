@@ -111,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                   BlocProvider.of<UserCubit>(
                     context,
                     listen: false,
-                  ).login("dslkNxlcksndxlvknsf@gmail.com", "ksjdoajdofads");
+                  ).login("swoudgkwv@gmail.com", "As1#234567!");
                 },
                 child: Container(
                   width: double.infinity,
